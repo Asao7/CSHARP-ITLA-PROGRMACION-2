@@ -38,7 +38,7 @@ namespace TransporteEscolar.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVehiculo(int id, Vehiculo vehiculo)
         {
-            if (id != vehiculo.VehiculoId)
+            if (id != vehiculo.Id)
                 return BadRequest();
 
             _context.Entry(vehiculo).State = EntityState.Modified;
@@ -54,7 +54,7 @@ namespace TransporteEscolar.API.Controllers
             _context.Vehiculos.Add(vehiculo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVehiculo", new { id = vehiculo.VehiculoId }, vehiculo);
+            return CreatedAtAction("GetVehiculo", new { id = vehiculo.Id }, vehiculo);
         }
 
         // DELETE: api/Vehiculos/5
